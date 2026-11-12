@@ -35,6 +35,8 @@ import { AdminUsageLogsPage } from './pages/admin/AdminUsageLogsPage'
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage'
 import { AdminSubscriptionsPage } from './pages/admin/AdminSubscriptionsPage'
 import { AdminBackupPage } from './pages/admin/AdminBackupPage'
+import { AdminPluginsPage } from './pages/admin/AdminPluginsPage'
+import { AdminChannelMonitorPage } from './pages/admin/AdminChannelMonitorPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -139,6 +141,8 @@ export function App() {
  <Route path="/admin/settings" element={<AdminSettingsPage />} />
  <Route path="/admin/subscriptions" element={<AdminSubscriptionsPage />} />
  <Route path="/admin/backup" element={<AdminBackupPage />} />
+ <Route path="/admin/plugins" element={<AdminPluginsPage />} />
+ <Route path="/admin/channel-monitor" element={<AdminChannelMonitorPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

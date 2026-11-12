@@ -28,6 +28,8 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/settings', labelKey: 'admin.settings' },
   { to: '/admin/subscriptions', labelKey: 'admin.subscriptions' },
   { to: '/admin/backup', labelKey: 'admin.backup' },
+  { to: '/admin/plugins', labelKey: 'admin.plugins' },
+  { to: '/admin/channel-monitor', labelKey: 'admin.channelMonitor' },
 ]
 
 export function AdminShell() {

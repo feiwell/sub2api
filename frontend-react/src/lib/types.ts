@@ -370,3 +370,29 @@ export interface BackupRecord {
   finished_at?: string
   [key: string]: unknown
 }
+
+export interface PluginInstallation {
+  id: number
+  plugin_key: string
+  name: string
+  version: string
+  description?: string
+  author?: string
+  signature_status?: 'trusted' | 'unsigned' | string
+  state: 'disabled' | 'starting' | 'enabled' | 'error' | 'incompatible' | string
+  last_error?: string
+  installed_at?: string
+  [key: string]: unknown
+}
+
+export interface ChannelMonitor {
+  id: number
+  name: string
+  provider?: string
+  endpoint?: string
+  primary_model?: string
+  group_name?: string
+  enabled: boolean
+  interval_seconds?: number
+  [key: string]: unknown
+}

@@ -16,6 +16,8 @@ import type {
   AdminUsageLog,
   UserSubscription,
   BackupRecord,
+  PluginInstallation,
+  ChannelMonitor,
   PaginatedResponse,
 } from './types'
 
@@ -166,6 +168,41 @@ export const adminApi = {
   async deleteBackup(id: string): Promise<{ message: string }> {
     const { data } = await apiClient.delete<{ message: string }>(`/admin/backups/${id}`)
     return data
+  },
+
+  // ---- Plugins ----
+  async listPlugins(): Promise<PluginInstallation[]> {
+    const { data } = await apiClient.get<PluginInstallation[]>('/admin/plugins')
+    return Array.isArray(data) ? data : []
+  },
+  async enablePlugin(id: number, rolloutPercent = 100, acceptUntested = false): Promise<PluginInstallation> {
+    const { data } = await apiClient.post<PluginInstallation>(`/admin/plugins/${id}/enable`, {
+      rollout_percent: rolloutPercent,
+      accept_untested: acceptUntested,
+    })
+    return data
+  },
+  async disablePlugin(id: number): Promise<PluginInstallation> {
+    const { data } = await apiClient.post<PluginInstallation>(`/admin/plugins/${id}/disable`)
+    return data
+  },
+  async deletePlugin(id: number): Promise<void> {
+    await apiClient.delete(`/admin/plugins/${id}`)
+  },
+
+  // ---- Channel monitors ----
+  async listChannelMonitors(page = 1, pageSize = 50): Promise<PaginatedResponse<ChannelMonitor>> {
+    const { data } = await apiClient.get<PaginatedResponse<ChannelMonitor>>('/admin/channel-monitors', {
+      params: { page, page_size: pageSize },
+    })
+    return data
+  },
+  async runChannelMonitor(id: number): Promise<unknown> {
+    const { data } = await apiClient.post(`/admin/channel-monitors/${id}/run`)
+    return data
+  },
+  async deleteChannelMonitor(id: number): Promise<void> {
+    await apiClient.delete(`/admin/channel-monitors/${id}`)
   },
 }
 
