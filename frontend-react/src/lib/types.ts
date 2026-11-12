@@ -95,3 +95,41 @@ export interface UpdateProfileRequest {
   username?: string
   avatar_url?: string | null
 }
+
+export interface AdminUser extends User {
+  balance?: number
+  status?: 'active' | 'disabled' | string
+  notes?: string
+  created_at?: string
+  last_used_at?: string | null
+  current_concurrency?: number
+}
+
+export interface AdminDashboardStats {
+  total_users?: number
+  today_new_users?: number
+  active_users?: number
+  total_api_keys?: number
+  active_api_keys?: number
+  total_accounts?: number
+  normal_accounts?: number
+  error_accounts?: number
+  total_requests?: number
+  total_tokens?: number
+  total_cost?: number
+  today_requests?: number
+  today_tokens?: number
+  today_cost?: number
+  rpm?: number
+  tpm?: number
+  [key: string]: unknown
+}
+
+export interface AdminUpdateUserRequest {
+  username?: string
+  email?: string
+  role?: 'admin' | 'user'
+  status?: 'active' | 'disabled'
+  balance?: number
+  notes?: string
+}
