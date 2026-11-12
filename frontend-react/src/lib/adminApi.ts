@@ -8,6 +8,9 @@ import type {
   AdminGroup,
   CreateGroupRequest,
   Account,
+  Proxy,
+  CreateProxyRequest,
+  AuditLog,
   PaginatedResponse,
 } from './types'
 
@@ -81,6 +84,32 @@ export const adminApi = {
   },
   async deleteAccount(id: number): Promise<{ message: string }> {
     const { data } = await apiClient.delete<{ message: string }>(`/admin/accounts/${id}`)
+    return data
+  },
+
+  // ---- Proxies ----
+  async listProxies(): Promise<Proxy[]> {
+    const { data } = await apiClient.get<Proxy[]>('/admin/proxies/all')
+    return data
+  },
+  async createProxy(payload: CreateProxyRequest): Promise<Proxy> {
+    const { data } = await apiClient.post<Proxy>('/admin/proxies', payload)
+    return data
+  },
+  async toggleProxyStatus(id: number, status: 'active' | 'inactive'): Promise<Proxy> {
+    const { data } = await apiClient.put<Proxy>(`/admin/proxies/${id}`, { status })
+    return data
+  },
+  async deleteProxy(id: number): Promise<{ message: string }> {
+    const { data } = await apiClient.delete<{ message: string }>(`/admin/proxies/${id}`)
+    return data
+  },
+
+  // ---- Audit logs ----
+  async listAuditLogs(page = 1, pageSize = 50): Promise<PaginatedResponse<AuditLog>> {
+    const { data } = await apiClient.get<PaginatedResponse<AuditLog>>('/admin/audit-logs', {
+      params: { page, page_size: pageSize },
+    })
     return data
   },
 }

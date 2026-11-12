@@ -24,6 +24,8 @@ import { AdminAnnouncementsPage } from './pages/admin/AdminAnnouncementsPage'
 import { AdminChannelsPage } from './pages/admin/AdminChannelsPage'
 import { AdminGroupsPage } from './pages/admin/AdminGroupsPage'
 import { AdminAccountsPage } from './pages/admin/AdminAccountsPage'
+import { AdminProxiesPage } from './pages/admin/AdminProxiesPage'
+import { AdminAuditLogPage } from './pages/admin/AdminAuditLogPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -112,6 +114,8 @@ export function App() {
  <Route path="/admin/channels" element={<AdminChannelsPage />} />
  <Route path="/admin/groups" element={<AdminGroupsPage />} />
  <Route path="/admin/accounts" element={<AdminAccountsPage />} />
+ <Route path="/admin/proxies" element={<AdminProxiesPage />} />
+ <Route path="/admin/audit" element={<AdminAuditLogPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

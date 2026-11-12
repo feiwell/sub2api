@@ -21,6 +21,8 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/channels', labelKey: 'admin.channels' },
   { to: '/admin/groups', labelKey: 'admin.groups' },
   { to: '/admin/accounts', labelKey: 'admin.accounts' },
+  { to: '/admin/proxies', labelKey: 'admin.proxies' },
+  { to: '/admin/audit', labelKey: 'admin.auditLog' },
 ]
 
 export function AdminShell() {

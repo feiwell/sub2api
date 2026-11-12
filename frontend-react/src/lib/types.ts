@@ -220,3 +220,39 @@ export interface PaymentOrder {
   paid_at?: string
   [key: string]: unknown
 }
+
+export interface Proxy {
+  id: number
+  name: string
+  protocol: string
+  host: string
+  port: number
+  username?: string | null
+  status: 'active' | 'inactive' | 'expired' | string
+  account_count?: number
+  country?: string
+  created_at?: string
+  [key: string]: unknown
+}
+
+export interface CreateProxyRequest {
+  name: string
+  protocol: string
+  host: string
+  port: number
+  username?: string | null
+  password?: string | null
+}
+
+export interface AuditLog {
+  id: number
+  created_at: string
+  actor_email: string
+  actor_role?: string
+  action: string
+  method?: string
+  path?: string
+  status_code?: number
+  client_ip?: string
+  [key: string]: unknown
+}
