@@ -336,3 +336,37 @@ export interface UserAffiliateDetail {
   effective_rebate_rate_percent: number
   invitees: AffiliateInvitee[]
 }
+
+export interface PlazaModel {
+  name: string
+  platform: string
+  [key: string]: unknown
+}
+
+export interface ModelPlazaGroup {
+  id: number
+  name: string
+  description?: string
+  platform: string
+  subscription_type?: string
+  rate_multiplier?: number
+  models: PlazaModel[]
+  [key: string]: unknown
+}
+
+export interface ModelPlazaResponse {
+  description?: string
+  groups: ModelPlazaGroup[]
+}
+
+export interface BackupRecord {
+  id: string
+  status: 'pending' | 'running' | 'completed' | 'failed' | string
+  backup_type?: string
+  file_name?: string
+  size_bytes?: number
+  triggered_by?: string
+  started_at?: string
+  finished_at?: string
+  [key: string]: unknown
+}

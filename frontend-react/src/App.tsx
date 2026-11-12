@@ -20,6 +20,7 @@ import { SubscriptionsPage } from './pages/SubscriptionsPage'
 import { OrdersPage } from './pages/OrdersPage'
 import { MCPPage } from './pages/MCPPage'
 import { AffiliatePage } from './pages/AffiliatePage'
+import { ModelPlazaPage } from './pages/ModelPlazaPage'
 import { HomePage } from './pages/HomePage'
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage'
 import { AdminUsersPage } from './pages/admin/AdminUsersPage'
@@ -33,6 +34,7 @@ import { AdminRedeemCodesPage } from './pages/admin/AdminRedeemCodesPage'
 import { AdminUsageLogsPage } from './pages/admin/AdminUsageLogsPage'
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage'
 import { AdminSubscriptionsPage } from './pages/admin/AdminSubscriptionsPage'
+import { AdminBackupPage } from './pages/admin/AdminBackupPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -112,6 +114,7 @@ export function App() {
  <Route path="/orders" element={<OrdersPage />} />
  <Route path="/mcp" element={<MCPPage />} />
  <Route path="/affiliate" element={<AffiliatePage />} />
+ <Route path="/models" element={<ModelPlazaPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
@@ -135,6 +138,7 @@ export function App() {
  <Route path="/admin/usage" element={<AdminUsageLogsPage />} />
  <Route path="/admin/settings" element={<AdminSettingsPage />} />
  <Route path="/admin/subscriptions" element={<AdminSubscriptionsPage />} />
+ <Route path="/admin/backup" element={<AdminBackupPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

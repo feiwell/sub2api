@@ -15,6 +15,7 @@ import type {
   GenerateRedeemCodesRequest,
   AdminUsageLog,
   UserSubscription,
+  BackupRecord,
   PaginatedResponse,
 } from './types'
 
@@ -150,6 +151,20 @@ export const adminApi = {
   },
   async revokeSubscription(id: number): Promise<{ message: string }> {
     const { data } = await apiClient.post<{ message: string }>(`/admin/subscriptions/${id}/revoke`)
+    return data
+  },
+
+  // ---- Backups ----
+  async listBackups(): Promise<BackupRecord[]> {
+    const { data } = await apiClient.get<{ items: BackupRecord[] }>('/admin/backups')
+    return Array.isArray(data?.items) ? data.items : []
+  },
+  async createBackup(): Promise<BackupRecord> {
+    const { data } = await apiClient.post<BackupRecord>('/admin/backups')
+    return data
+  },
+  async deleteBackup(id: string): Promise<{ message: string }> {
+    const { data } = await apiClient.delete<{ message: string }>(`/admin/backups/${id}`)
     return data
   },
 }

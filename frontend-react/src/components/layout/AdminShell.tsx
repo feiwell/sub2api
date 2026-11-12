@@ -27,6 +27,7 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/usage', labelKey: 'admin.usage' },
   { to: '/admin/settings', labelKey: 'admin.settings' },
   { to: '/admin/subscriptions', labelKey: 'admin.subscriptions' },
+  { to: '/admin/backup', labelKey: 'admin.backup' },
 ]
 
 export function AdminShell() {
