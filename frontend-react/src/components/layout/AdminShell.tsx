@@ -25,6 +25,7 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/audit', labelKey: 'admin.auditLog' },
   { to: '/admin/redeem-codes', labelKey: 'admin.redeemCodes' },
   { to: '/admin/usage', labelKey: 'admin.usage' },
+  { to: '/admin/settings', labelKey: 'admin.settings' },
 ]
 
 export function AdminShell() {

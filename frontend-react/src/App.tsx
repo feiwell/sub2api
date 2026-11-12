@@ -28,6 +28,7 @@ import { AdminProxiesPage } from './pages/admin/AdminProxiesPage'
 import { AdminAuditLogPage } from './pages/admin/AdminAuditLogPage'
 import { AdminRedeemCodesPage } from './pages/admin/AdminRedeemCodesPage'
 import { AdminUsageLogsPage } from './pages/admin/AdminUsageLogsPage'
+import { AdminSettingsPage } from './pages/admin/AdminSettingsPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -120,6 +121,7 @@ export function App() {
  <Route path="/admin/audit" element={<AdminAuditLogPage />} />
  <Route path="/admin/redeem-codes" element={<AdminRedeemCodesPage />} />
  <Route path="/admin/usage" element={<AdminUsageLogsPage />} />
+ <Route path="/admin/settings" element={<AdminSettingsPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

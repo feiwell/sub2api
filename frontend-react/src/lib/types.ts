@@ -288,3 +288,20 @@ export interface AdminUsageLog {
   created_at?: string
   [key: string]: unknown
 }
+
+export interface SystemSettings {
+  site_name?: string
+  site_logo?: string
+  contact_info?: string
+  frontend_url?: string
+  registration_enabled?: boolean
+  email_verify_enabled?: boolean
+  promo_code_enabled?: boolean
+  password_reset_enabled?: boolean
+  invitation_code_enabled?: boolean
+  totp_enabled?: boolean
+  passkey_enabled?: boolean
+  default_balance?: number
+  default_concurrency?: number
+  [key: string]: unknown
+}
