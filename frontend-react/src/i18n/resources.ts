@@ -47,7 +47,7 @@ export const en = {
         failed: 'Sign-in failed. Please try again.',
       },
     },
-    dashboard: { title: 'Dashboard', welcome: 'Welcome back' },
+    dashboard: { title: 'Dashboard', welcome: 'Welcome back', trend: 'Usage trend', noTrend: 'No trend data yet.' },
     profile: {
       title: 'Profile',
       account: 'Account',
@@ -379,7 +379,7 @@ export const zh = {
  failed: '登录失败，请重试。',
       },
     },
-    dashboard: { title: '仪表盘', welcome: '欢迎回来' },
+    dashboard: { title: '仪表盘', welcome: '欢迎回来', trend: '用量趋势', noTrend: '暂无趋势数据。' },
     profile: {
       title: '个人资料',
       account: '账户',

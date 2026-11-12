@@ -396,3 +396,19 @@ export interface ChannelMonitor {
   interval_seconds?: number
   [key: string]: unknown
 }
+
+export interface TrendDataPoint {
+  date: string
+  requests: number
+  total_tokens: number
+  cost: number
+  actual_cost?: number
+  [key: string]: unknown
+}
+
+export interface TrendResponse {
+  trend: TrendDataPoint[]
+  start_date?: string
+  end_date?: string
+  granularity?: string
+}

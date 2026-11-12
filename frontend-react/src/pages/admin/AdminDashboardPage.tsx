@@ -6,6 +6,7 @@ import { Card } from '@astryxdesign/core/Card'
 import { Heading } from '@astryxdesign/core/Heading'
 import { Text } from '@astryxdesign/core/Text'
 import { adminApi } from '@/lib/adminApi'
+import { TrendChart } from '@/components/TrendChart'
 
 function n(v: unknown): string {
   const x = typeof v === 'number' ? v : Number(v)
@@ -22,6 +23,7 @@ export function AdminDashboardPage() {
     queryKey: ['admin-dashboard'],
     queryFn: () => adminApi.getDashboardStats(),
   })
+  const trend = useQuery({ queryKey: ['admin-dashboard-trend'], queryFn: () => adminApi.getDashboardTrend() })
 
   const groups = [
     {
@@ -69,6 +71,24 @@ export function AdminDashboardPage() {
    </HStack>
         </VStack>
       ))}
+      <Card padding={6}>
+        <VStack gap={4}>
+   <Heading level={4}>{t('dashboard.trend')}</Heading>
+   {trend.isLoading ? (
+     <Text type="supporting">{t('common.loading')}</Text>
+          ) : (trend.data?.trend?.length ?? 0) === 0 ? (
+     <Text type="supporting">{t('dashboard.noTrend')}</Text>
+   ) : (
+     <TrendChart
+       points={trend.data!.trend}
+       series={[
+         { key: 'requests', label: t('admin.stat.totalRequests'), color: '#6741d9' },
+         { key: 'cost', label: t('admin.stat.totalCost'), color: '#12b886' },
+       ]}
+     />
+   )}
+        </VStack>
+      </Card>
     </VStack>
   )
 }

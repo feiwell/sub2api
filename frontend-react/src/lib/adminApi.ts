@@ -18,12 +18,17 @@ import type {
   BackupRecord,
   PluginInstallation,
   ChannelMonitor,
+  TrendResponse,
   PaginatedResponse,
 } from './types'
 
 export const adminApi = {
   async getDashboardStats(): Promise<AdminDashboardStats> {
     const { data } = await apiClient.get<AdminDashboardStats>('/admin/dashboard/stats')
+    return data
+  },
+  async getDashboardTrend(): Promise<TrendResponse> {
+    const { data } = await apiClient.get<TrendResponse>('/admin/dashboard/trend')
     return data
   },
   async listUsers(
