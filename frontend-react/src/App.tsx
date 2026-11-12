@@ -20,6 +20,8 @@ import { HomePage } from './pages/HomePage'
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage'
 import { AdminUsersPage } from './pages/admin/AdminUsersPage'
 import { AdminAnnouncementsPage } from './pages/admin/AdminAnnouncementsPage'
+import { AdminChannelsPage } from './pages/admin/AdminChannelsPage'
+import { AdminGroupsPage } from './pages/admin/AdminGroupsPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -104,6 +106,8 @@ export function App() {
         <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
         <Route path="/admin/users" element={<AdminUsersPage />} />
  <Route path="/admin/announcements" element={<AdminAnnouncementsPage />} />
+ <Route path="/admin/channels" element={<AdminChannelsPage />} />
+ <Route path="/admin/groups" element={<AdminGroupsPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

@@ -165,3 +165,33 @@ export interface CreateAnnouncementRequest {
   content: string
   status?: string
 }
+
+export interface Channel {
+  id: number
+  name: string
+  description?: string
+  status?: string
+  group_ids?: number[]
+  created_at?: string
+  updated_at?: string
+  [key: string]: unknown
+}
+
+export interface AdminGroup {
+  id: number
+  name: string
+  description?: string | null
+  platform?: string
+  status?: 'active' | 'inactive' | string
+  rate_multiplier?: number
+  is_exclusive?: boolean
+  created_at?: string
+  [key: string]: unknown
+}
+
+export interface CreateGroupRequest {
+  name: string
+  description?: string | null
+  platform?: string
+  rate_multiplier?: number
+}

@@ -4,6 +4,9 @@ import type {
   AdminUser,
   AdminDashboardStats,
   AdminUpdateUserRequest,
+  Channel,
+  AdminGroup,
+  CreateGroupRequest,
   PaginatedResponse,
 } from './types'
 
@@ -34,4 +37,34 @@ export const adminApi = {
     const { data } = await apiClient.delete<{ message: string }>(`/admin/users/${id}`)
     return data
   },
+
+  // ---- Channels ----
+  async listChannels(page = 1, pageSize = 50): Promise<PaginatedResponse<Channel>> {
+    const { data } = await apiClient.get<PaginatedResponse<Channel>>('/admin/channels', {
+      params: { page, page_size: pageSize },
+    })
+    return data
+  },
+  async deleteChannel(id: number): Promise<void> {
+    await apiClient.delete(`/admin/channels/${id}`)
+  },
+
+  // ---- Groups ----
+  async listGroups(): Promise<AdminGroup[]> {
+    const { data } = await apiClient.get<AdminGroup[]>('/admin/groups/all')
+    return data
+  },
+  async createGroup(payload: CreateGroupRequest): Promise<AdminGroup> {
+    const { data } = await apiClient.post<AdminGroup>('/admin/groups', payload)
+    return data
+  },
+  async toggleGroupStatus(id: number, status: 'active' | 'inactive'): Promise<AdminGroup> {
+    const { data } = await apiClient.put<AdminGroup>(`/admin/groups/${id}`, { status })
+    return data
+  },
+  async deleteGroup(id: number): Promise<{ message: string }> {
+    const { data } = await apiClient.delete<{ message: string }>(`/admin/groups/${id}`)
+    return data
+  },
 }
+

@@ -18,6 +18,8 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/dashboard', labelKey: 'admin.dashboard' },
   { to: '/admin/users', labelKey: 'admin.users' },
   { to: '/admin/announcements', labelKey: 'admin.announcements' },
+  { to: '/admin/channels', labelKey: 'admin.channels' },
+  { to: '/admin/groups', labelKey: 'admin.groups' },
 ]
 
 export function AdminShell() {
