@@ -195,3 +195,28 @@ export interface CreateGroupRequest {
   platform?: string
   rate_multiplier?: number
 }
+
+export interface Account {
+  id: number
+  name: string
+  platform?: string
+  type?: string
+  status?: 'active' | 'inactive' | string
+  notes?: string | null
+  created_at?: string
+  [key: string]: unknown
+}
+
+export interface PaymentOrder {
+  id: number
+  amount: number
+  pay_amount?: number
+  currency?: string
+  payment_type?: string
+  out_trade_no: string
+  status: string
+  order_type?: string
+  created_at: string
+  paid_at?: string
+  [key: string]: unknown
+}

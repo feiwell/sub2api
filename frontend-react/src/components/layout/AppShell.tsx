@@ -19,6 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/usage', labelKey: 'nav.usage' },
   { to: '/redeem', labelKey: 'nav.redeem' },
   { to: '/subscriptions', labelKey: 'nav.subscriptions' },
+  { to: '/orders', labelKey: 'nav.orders' },
   { to: '/profile', labelKey: 'nav.profile' },
 ]
 

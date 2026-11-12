@@ -7,6 +7,7 @@ import type {
   Channel,
   AdminGroup,
   CreateGroupRequest,
+  Account,
   PaginatedResponse,
 } from './types'
 
@@ -64,6 +65,22 @@ export const adminApi = {
   },
   async deleteGroup(id: number): Promise<{ message: string }> {
     const { data } = await apiClient.delete<{ message: string }>(`/admin/groups/${id}`)
+    return data
+  },
+
+  // ---- Accounts ----
+  async listAccounts(page = 1, pageSize = 50): Promise<PaginatedResponse<Account>> {
+    const { data } = await apiClient.get<PaginatedResponse<Account>>('/admin/accounts', {
+      params: { page, page_size: pageSize },
+    })
+    return data
+  },
+  async toggleAccountStatus(id: number, status: 'active' | 'inactive'): Promise<Account> {
+    const { data } = await apiClient.put<Account>(`/admin/accounts/${id}`, { status })
+    return data
+  },
+  async deleteAccount(id: number): Promise<{ message: string }> {
+    const { data } = await apiClient.delete<{ message: string }>(`/admin/accounts/${id}`)
     return data
   },
 }

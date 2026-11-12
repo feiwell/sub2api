@@ -16,12 +16,14 @@ import { KeysPage } from './pages/KeysPage'
 import { UsagePage } from './pages/UsagePage'
 import { RedeemPage } from './pages/RedeemPage'
 import { SubscriptionsPage } from './pages/SubscriptionsPage'
+import { OrdersPage } from './pages/OrdersPage'
 import { HomePage } from './pages/HomePage'
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage'
 import { AdminUsersPage } from './pages/admin/AdminUsersPage'
 import { AdminAnnouncementsPage } from './pages/admin/AdminAnnouncementsPage'
 import { AdminChannelsPage } from './pages/admin/AdminChannelsPage'
 import { AdminGroupsPage } from './pages/admin/AdminGroupsPage'
+import { AdminAccountsPage } from './pages/admin/AdminAccountsPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -92,6 +94,7 @@ export function App() {
         <Route path="/usage" element={<UsagePage />} />
  <Route path="/redeem" element={<RedeemPage />} />
         <Route path="/subscriptions" element={<SubscriptionsPage />} />
+ <Route path="/orders" element={<OrdersPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
@@ -108,6 +111,7 @@ export function App() {
  <Route path="/admin/announcements" element={<AdminAnnouncementsPage />} />
  <Route path="/admin/channels" element={<AdminChannelsPage />} />
  <Route path="/admin/groups" element={<AdminGroupsPage />} />
+ <Route path="/admin/accounts" element={<AdminAccountsPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
