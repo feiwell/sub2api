@@ -24,7 +24,9 @@ export default defineConfig(({ mode }) => {
       proxy: {
  '/api': { target: backendUrl, changeOrigin: true },
         '/v1': { target: backendUrl, changeOrigin: true },
-        '/setup': { target: backendUrl, changeOrigin: true },
+        // In production the Go backend serves /setup/* and the embedded SPA, so
+ // no dev proxy is needed for the installer. Point VITE_DEV_PROXY_TARGET at
+        // a backend and add a '/setup' proxy here only if exercising it in dev.
       },
     },
   }
