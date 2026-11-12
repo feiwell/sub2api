@@ -256,3 +256,35 @@ export interface AuditLog {
   client_ip?: string
   [key: string]: unknown
 }
+
+export type RedeemCodeType = 'balance' | 'concurrency' | 'subscription' | 'invitation'
+
+export interface RedeemCode {
+  id: number
+  code: string
+  type: RedeemCodeType | string
+  value: number
+  status: 'active' | 'used' | 'expired' | 'unused' | 'disabled' | string
+  used_at: string | null
+  created_at: string
+  expires_at?: string | null
+  [key: string]: unknown
+}
+
+export interface GenerateRedeemCodesRequest {
+  count: number
+  type: RedeemCodeType | string
+  value: number
+  expires_in_days?: number
+}
+
+export interface AdminUsageLog {
+  id: number
+  user_id: number
+  model: string
+  total_cost?: number
+  input_tokens?: number
+  output_tokens?: number
+  created_at?: string
+  [key: string]: unknown
+}

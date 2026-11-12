@@ -11,6 +11,9 @@ import type {
   Proxy,
   CreateProxyRequest,
   AuditLog,
+  RedeemCode,
+  GenerateRedeemCodesRequest,
+  AdminUsageLog,
   PaginatedResponse,
 } from './types'
 
@@ -108,6 +111,30 @@ export const adminApi = {
   // ---- Audit logs ----
   async listAuditLogs(page = 1, pageSize = 50): Promise<PaginatedResponse<AuditLog>> {
     const { data } = await apiClient.get<PaginatedResponse<AuditLog>>('/admin/audit-logs', {
+      params: { page, page_size: pageSize },
+    })
+    return data
+  },
+
+  // ---- Redeem codes ----
+  async listRedeemCodes(page = 1, pageSize = 50): Promise<PaginatedResponse<RedeemCode>> {
+    const { data } = await apiClient.get<PaginatedResponse<RedeemCode>>('/admin/redeem-codes', {
+      params: { page, page_size: pageSize },
+    })
+    return data
+  },
+  async generateRedeemCodes(payload: GenerateRedeemCodesRequest): Promise<RedeemCode[]> {
+    const { data } = await apiClient.post<RedeemCode[]>('/admin/redeem-codes/generate', payload)
+    return data
+  },
+  async deleteRedeemCode(id: number): Promise<{ message: string }> {
+    const { data } = await apiClient.delete<{ message: string }>(`/admin/redeem-codes/${id}`)
+    return data
+  },
+
+  // ---- Usage logs ----
+  async listUsageLogs(page = 1, pageSize = 50): Promise<PaginatedResponse<AdminUsageLog>> {
+    const { data } = await apiClient.get<PaginatedResponse<AdminUsageLog>>('/admin/usage', {
       params: { page, page_size: pageSize },
     })
     return data

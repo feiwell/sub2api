@@ -23,6 +23,8 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/accounts', labelKey: 'admin.accounts' },
   { to: '/admin/proxies', labelKey: 'admin.proxies' },
   { to: '/admin/audit', labelKey: 'admin.auditLog' },
+  { to: '/admin/redeem-codes', labelKey: 'admin.redeemCodes' },
+  { to: '/admin/usage', labelKey: 'admin.usage' },
 ]
 
 export function AdminShell() {
