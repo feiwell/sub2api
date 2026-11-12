@@ -133,3 +133,35 @@ export interface AdminUpdateUserRequest {
   balance?: number
   notes?: string
 }
+
+export interface UserSubscription {
+  id: number
+  user_id: number
+  group_id: number
+  status: 'active' | 'expired' | 'revoked' | 'suspended' | string
+  starts_at: string
+  daily_usage_usd: number
+  weekly_usage_usd: number
+  monthly_usage_usd: number
+  created_at: string
+  expires_at: string | null
+  group?: { id: number; name?: string; [key: string]: unknown }
+}
+
+export interface Announcement {
+  id: number
+  title: string
+  content: string
+  status: string
+  notify_mode?: string
+  starts_at?: string
+  ends_at?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface CreateAnnouncementRequest {
+  title: string
+  content: string
+  status?: string
+}

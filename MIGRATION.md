@@ -52,9 +52,9 @@
 - [x] **阶段 0 基建**：fork + clone、代理、脚手架、Astryx 接入、`tsc -b` 与 `vite build` 通过。
 - [x] **阶段 1 骨架**：Providers、路由、受保护路由、AppShell（顶栏/导航/主题/语言切换）、Login、Register、Dashboard、404。已复用 axios 客户端与 auth store（localStorage key 与后端兼容）。
 - [~] **阶段 2 认证全量**：已完成 忘记密码/重置密码；待办 OAuth 回调（Google/LinuxDo/WeChat/DingTalk/OIDC）、邮箱验证、2FA/Passkey、Setup 向导。
-- [~] **阶段 3 用户区**：已完成 Profile（改用户名/改密码）、Keys（增删改查+启停，Astryx Table+Badge）、Usage（指标卡 + react-query）；待办 Subscriptions、Payment（Stripe/Airwallex/微信/二维码）、Redeem、Affiliate、MCP、Channels/ChannelStatus、ModelPlaza、Orders。
-- [~] **阶段 4 管理区**：已完成 AdminShell（侧栏布局 + RequireAdmin 守卫）、Admin Dashboard（统计卡）、Admin Users（搜索 + Astryx Table + 启停）；待办 Accounts、Channels、Groups、Subscriptions、Usage、Settings、Announcements、PromoCodes、Proxies、RiskControl、AuditLog、Backup、Plugins、Redeem、ChannelMonitor。
-- [ ] **阶段 5 公共/收尾**：Home、KeyUsage、LegalDocument、Toast/公告弹窗/合规弹窗等全局组件；完整 i18n 迁移；图表；替换 `frontend/`。
+- [~] **阶段 3 用户区**：已完成 Profile（改用户名/改密码）、Keys（增删改查+启停，Astryx Table+Badge）、Usage（指标卡 + react-query）；待办 Subscriptions、Payment（Stripe/Airwallex/微信/二维码）、Redeem、Affiliate、MCP、Channels/ChannelStatus、ModelPlaza、Orders（已完成 Subscriptions 列表）。
+- [~] **阶段 4 管理区**：已完成 AdminShell（侧栏布局 + RequireAdmin 守卫）、Admin Dashboard（统计卡）、Admin Users（搜索 + Astryx Table + 启停）、Admin Announcements（新建/删除）；待办 Accounts、Channels、Groups、Subscriptions、Usage、Settings、Announcements、PromoCodes、Proxies、RiskControl、AuditLog、Backup、Plugins、Redeem、ChannelMonitor。
+- [ ] **阶段 5 公共/收尾**：Home、KeyUsage、LegalDocument、Toast(已完成)/公告弹窗/合规弹窗等全局组件；完整 i18n 迁移；图表；替换 `frontend/`（已完成公共 Home 落地页）。
 
 ### 已就绪的基础设施
 - 状态管理：Zustand（auth/app）+ TanStack Query（服务端状态，`QueryClientProvider`）。

@@ -17,6 +17,7 @@ interface NavItem {
 const ADMIN_NAV: NavItem[] = [
   { to: '/admin/dashboard', labelKey: 'admin.dashboard' },
   { to: '/admin/users', labelKey: 'admin.users' },
+  { to: '/admin/announcements', labelKey: 'admin.announcements' },
 ]
 
 export function AdminShell() {

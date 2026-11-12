@@ -15,8 +15,11 @@ import { ProfilePage } from './pages/ProfilePage'
 import { KeysPage } from './pages/KeysPage'
 import { UsagePage } from './pages/UsagePage'
 import { RedeemPage } from './pages/RedeemPage'
+import { SubscriptionsPage } from './pages/SubscriptionsPage'
+import { HomePage } from './pages/HomePage'
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage'
 import { AdminUsersPage } from './pages/admin/AdminUsersPage'
+import { AdminAnnouncementsPage } from './pages/admin/AdminAnnouncementsPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function RequireAuth({ children }: { children: ReactElement }) {
@@ -68,6 +71,7 @@ export function App() {
   return (
     <Routes>
       <Route path="/setup" element={<SetupPage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -85,6 +89,7 @@ export function App() {
         <Route path="/keys" element={<KeysPage />} />
         <Route path="/usage" element={<UsagePage />} />
  <Route path="/redeem" element={<RedeemPage />} />
+        <Route path="/subscriptions" element={<SubscriptionsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
@@ -98,6 +103,7 @@ export function App() {
         <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
         <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
         <Route path="/admin/users" element={<AdminUsersPage />} />
+ <Route path="/admin/announcements" element={<AdminAnnouncementsPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
