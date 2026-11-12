@@ -38,3 +38,60 @@ export interface RegisterRequest {
   password: string
   [key: string]: unknown
 }
+
+export interface PaginatedResponse<T> {
+  items: T[]
+  total: number
+  page: number
+  page_size: number
+  pages: number
+}
+
+export interface ApiKey {
+  id: number
+  user_id: number
+  key: string
+  name: string
+  group_id: number | null
+  status: 'active' | 'inactive' | 'quota_exhausted' | 'expired'
+  ip_whitelist: string[]
+  ip_blacklist: string[]
+  last_used_at: string | null
+  quota: number
+  quota_used: number
+  expires_at: string | null
+  created_at: string
+  updated_at: string
+  current_concurrency?: number
+}
+
+export interface CreateApiKeyRequest {
+  name: string
+  group_id?: number | null
+  custom_key?: string
+  quota?: number
+  expires_in_days?: number
+}
+
+export interface UpdateApiKeyRequest {
+  name?: string
+  status?: 'active' | 'inactive'
+  quota?: number
+  expires_at?: string | null
+  reset_quota?: boolean
+}
+
+export interface UserDashboardStats {
+  total_requests?: number
+  total_tokens?: number
+  total_cost?: number
+  balance?: number
+  today_requests?: number
+  today_cost?: number
+  [key: string]: unknown
+}
+
+export interface UpdateProfileRequest {
+  username?: string
+  avatar_url?: string | null
+}

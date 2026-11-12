@@ -15,6 +15,9 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { to: '/dashboard', labelKey: 'nav.dashboard' },
+  { to: '/keys', labelKey: 'nav.keys' },
+  { to: '/usage', labelKey: 'nav.usage' },
+  { to: '/profile', labelKey: 'nav.profile' },
 ]
 
 export function AppShell() {
@@ -77,7 +80,7 @@ export function AppShell() {
      label={(user?.display_name as string) || (user?.username as string) || t('nav.profile')}
      variant="ghost"
      size="sm"
-     href="/dashboard"
+     href="/profile"
           />
           <Button label={t('nav.logout')} variant="secondary" size="sm" onClick={handleLogout} />
  </HStack>

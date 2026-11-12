@@ -100,6 +100,11 @@ type="password"
          <Text color="accent">{t('auth.register')}</Text>
 </Link>
      </HStack>
+      <HStack justify="center">
+        <Link to="/forgot-password" style={{ textDecoration: "none" }}>
+   <Text type="supporting" color="accent">{t("auth.forgotTitle")}</Text>
+        </Link>
+      </HStack>
    </VStack>
         </form>
       </Card>
