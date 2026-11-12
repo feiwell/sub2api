@@ -8,7 +8,9 @@ import { Heading } from '@astryxdesign/core/Heading'
 import { Text } from '@astryxdesign/core/Text'
 import { TextInput } from '@astryxdesign/core/TextInput'
 import { Button } from '@astryxdesign/core/Button'
+import { Badge } from '@astryxdesign/core/Badge'
 import { userApi } from '@/lib/userApi'
+import { securityApi } from '@/lib/securityApi'
 import { useAuthStore } from '@/stores/authStore'
 import type { ApiError, User } from '@/lib/types'
 import { toast } from '@/lib/toast'
@@ -22,6 +24,8 @@ export function ProfilePage() {
     queryKey: ['profile'],
     queryFn: () => userApi.getProfile(),
   })
+  const totp = useQuery({ queryKey: ['totp-status'], queryFn: () => securityApi.getTotpStatus() })
+  const passkeys = useQuery({ queryKey: ['passkeys'], queryFn: () => securityApi.listPasskeys() })
 
   const [username, setUsername] = useState('')
   const [savingProfile, setSavingProfile] = useState(false)
@@ -116,6 +120,23 @@ export function ProfilePage() {
           {pwdMsg ? <Text color="accent">{pwdMsg}</Text> : null}
           <HStack>
      <Button label={t('profile.changePassword')} variant="primary" isLoading={savingPwd} clickAction={savePassword} />
+          </HStack>
+               </VStack>
+      </Card>
+
+      <Card padding={6}>
+        <VStack gap={4}>
+   <Heading level={4}>{t('profile.security')}</Heading>
+   <HStack justify="between" vAlign="center">
+     <Text>{t('profile.twoFactor')}</Text>
+     <Badge
+       label={totp.data?.enabled ? t('profile.enabled') : t('profile.disabled')}
+       variant={totp.data?.enabled ? 'success' : 'neutral'}
+     />
+          </HStack>
+          <HStack justify="between" vAlign="center">
+     <Text>{t('profile.passkeys')}</Text>
+     <Text type="supporting">{t('profile.passkeyCount', { n: passkeys.data?.length ?? 0 })}</Text>
           </HStack>
         </VStack>
       </Card>

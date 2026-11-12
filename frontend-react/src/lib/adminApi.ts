@@ -19,6 +19,8 @@ import type {
   PluginInstallation,
   ChannelMonitor,
   TrendResponse,
+  ModerationConfig,
+  ModerationLog,
   PaginatedResponse,
 } from './types'
 
@@ -208,6 +210,22 @@ export const adminApi = {
   },
   async deleteChannelMonitor(id: number): Promise<void> {
     await apiClient.delete(`/admin/channel-monitors/${id}`)
+  },
+
+  // ---- Risk control (content moderation) ----
+  async getModerationConfig(): Promise<ModerationConfig> {
+    const { data } = await apiClient.get<ModerationConfig>('/admin/risk-control/config')
+    return data
+  },
+  async updateModerationConfig(patch: Partial<ModerationConfig>): Promise<ModerationConfig> {
+    const { data } = await apiClient.put<ModerationConfig>('/admin/risk-control/config', patch)
+    return data
+  },
+  async listModerationLogs(page = 1, pageSize = 50): Promise<{ items: ModerationLog[]; total: number }> {
+    const { data } = await apiClient.get<{ items: ModerationLog[]; total: number }>('/admin/risk-control/logs', {
+      params: { page, page_size: pageSize },
+    })
+    return data
   },
 }
 

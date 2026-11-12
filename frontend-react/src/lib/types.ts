@@ -412,3 +412,40 @@ export interface TrendResponse {
   end_date?: string
   granularity?: string
 }
+
+export interface ModerationConfig {
+  enabled: boolean
+  mode?: string
+  base_url?: string
+  model?: string
+  sample_rate?: number
+  record_non_hits?: boolean
+  email_on_hit?: boolean
+  auto_ban_enabled?: boolean
+  block_message?: string
+  [key: string]: unknown
+}
+
+export interface ModerationLog {
+  id: number
+  request_id?: string
+  user_id?: number | null
+  model?: string
+  action?: string
+  created_at: string
+  [key: string]: unknown
+}
+
+export interface TotpStatus {
+  enabled: boolean
+  enabled_at: number | null
+  feature_enabled: boolean
+}
+
+export interface PasskeyCredentialSummary {
+  id: number
+  name: string
+  created_at: string
+  last_used_at?: string
+  backup: boolean
+}

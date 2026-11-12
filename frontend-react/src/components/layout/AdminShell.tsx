@@ -30,6 +30,7 @@ const ADMIN_NAV: NavItem[] = [
   { to: '/admin/backup', labelKey: 'admin.backup' },
   { to: '/admin/plugins', labelKey: 'admin.plugins' },
   { to: '/admin/channel-monitor', labelKey: 'admin.channelMonitor' },
+  { to: '/admin/risk-control', labelKey: 'admin.riskControl' },
 ]
 
 export function AdminShell() {
