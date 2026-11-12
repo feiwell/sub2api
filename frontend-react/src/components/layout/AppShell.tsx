@@ -20,6 +20,8 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/redeem', labelKey: 'nav.redeem' },
   { to: '/subscriptions', labelKey: 'nav.subscriptions' },
   { to: '/orders', labelKey: 'nav.orders' },
+  { to: '/mcp', labelKey: 'nav.mcp' },
+  { to: '/affiliate', labelKey: 'nav.affiliate' },
   { to: '/profile', labelKey: 'nav.profile' },
 ]
 

@@ -305,3 +305,34 @@ export interface SystemSettings {
   default_concurrency?: number
   [key: string]: unknown
 }
+
+export interface MCPGrant {
+  id: string
+  client_id: string
+  client_name: string
+  scope: string
+  read_only: boolean
+  created_at: string
+  expires_at: string
+  last_used_at: string | null
+  revoked_at: string | null
+  invalidated: boolean
+}
+
+export interface AffiliateInvitee {
+  id?: number
+  email?: string
+  created_at?: string
+  [key: string]: unknown
+}
+
+export interface UserAffiliateDetail {
+  user_id: number
+  aff_code: string
+  aff_count: number
+  aff_quota: number
+  aff_frozen_quota: number
+  aff_history_quota: number
+  effective_rebate_rate_percent: number
+  invitees: AffiliateInvitee[]
+}

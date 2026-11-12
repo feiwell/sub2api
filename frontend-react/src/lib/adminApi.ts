@@ -14,6 +14,7 @@ import type {
   RedeemCode,
   GenerateRedeemCodesRequest,
   AdminUsageLog,
+  UserSubscription,
   PaginatedResponse,
 } from './types'
 
@@ -137,6 +138,18 @@ export const adminApi = {
     const { data } = await apiClient.get<PaginatedResponse<AdminUsageLog>>('/admin/usage', {
       params: { page, page_size: pageSize },
     })
+    return data
+  },
+
+  // ---- Subscriptions ----
+  async listSubscriptions(page = 1, pageSize = 50): Promise<PaginatedResponse<UserSubscription>> {
+    const { data } = await apiClient.get<PaginatedResponse<UserSubscription>>('/admin/subscriptions', {
+      params: { page, page_size: pageSize },
+    })
+    return data
+  },
+  async revokeSubscription(id: number): Promise<{ message: string }> {
+    const { data } = await apiClient.post<{ message: string }>(`/admin/subscriptions/${id}/revoke`)
     return data
   },
 }
