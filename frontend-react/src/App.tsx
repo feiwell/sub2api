@@ -10,6 +10,7 @@ import { RegisterPage } from './pages/RegisterPage'
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage'
 import { ResetPasswordPage } from './pages/ResetPasswordPage'
 import { SetupPage } from './pages/SetupPage'
+import { OAuthCallbackPage } from './pages/auth/OAuthCallbackPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { KeysPage } from './pages/KeysPage'
@@ -88,6 +89,12 @@ export function App() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
+      <Route path="/auth/callback" element={<OAuthCallbackPage />} />
+      <Route path="/auth/oauth/callback" element={<OAuthCallbackPage />} />
+      <Route path="/auth/linuxdo/callback" element={<OAuthCallbackPage />} />
+      <Route path="/auth/wechat/callback" element={<OAuthCallbackPage />} />
+      <Route path="/auth/dingtalk/callback" element={<OAuthCallbackPage />} />
+      <Route path="/auth/oidc/callback" element={<OAuthCallbackPage />} />
 
       <Route
  element={

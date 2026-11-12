@@ -12,6 +12,7 @@ import { authApi } from '@/lib/authApi'
 import { useAuthStore } from '@/stores/authStore'
 import { useAppStore } from '@/stores/appStore'
 import type { ApiError, User } from '@/lib/types'
+import { buildOAuthStartUrl } from '@/lib/apiUrl'
 
 export function LoginPage() {
   const { t } = useTranslation()
@@ -93,6 +94,21 @@ type="password"
        isLoading={loading}
        clickAction={() => handleSubmit()}
      />
+
+     <HStack gap={2} vAlign="center" justify="center">
+       <Button
+         label={t('auth.oauth.github')}
+         variant="secondary"
+  width="100%"
+         onClick={() => { window.location.href = buildOAuthStartUrl('github') }}
+       />
+       <Button
+         label={t('auth.oauth.google')}
+  variant="secondary"
+         width="100%"
+         onClick={() => { window.location.href = buildOAuthStartUrl('google') }}
+       />
+     </HStack>
 
             <HStack gap={1} vAlign="center" justify="center">
        <Text type="supporting">{t('auth.noAccount')}</Text>

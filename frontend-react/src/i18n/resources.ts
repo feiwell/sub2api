@@ -37,6 +37,14 @@ export const en = {
       forgotSent: 'If the email exists, a reset link has been sent.',
       resetTitle: 'Reset password',
       resetToken: 'Reset token',
+      oauth: {
+ title: 'Sign in',
+        github: 'GitHub',
+        google: 'Google',
+        processing: 'Completing sign-in...',
+ missingToken: 'No sign-in token was returned.',
+        failed: 'Sign-in failed. Please try again.',
+      },
     },
     dashboard: { title: 'Dashboard', welcome: 'Welcome back' },
     profile: {
@@ -321,6 +329,14 @@ export const zh = {
       forgotSent: '如果邮箱存在，重置链接已发送。',
       resetTitle: '重置密码',
       resetToken: '重置令牌',
+      oauth: {
+        title: '登录',
+        github: 'GitHub',
+        google: 'Google',
+ processing: '正在完成登录...',
+ missingToken: '未返回登录令牌。',
+ failed: '登录失败，请重试。',
+      },
     },
     dashboard: { title: '仪表盘', welcome: '欢迎回来' },
     profile: {

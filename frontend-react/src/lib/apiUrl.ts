@@ -29,3 +29,8 @@ export function buildApiUrl(path: string): string {
   }
   return `${base}${suffix}`
 }
+
+export function buildOAuthStartUrl(provider: string): string {
+  const base = getAPIBaseURL().replace(/\/+$/, '')
+  return `${base}/auth/oauth/${provider}/start`
+}
