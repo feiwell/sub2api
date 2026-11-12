@@ -1,8 +1,10 @@
 import { forwardRef, type AnchorHTMLAttributes, type ReactNode, type Ref } from 'react'
 import { Theme } from '@astryxdesign/core/theme'
 import { LinkProvider } from '@astryxdesign/core/Link'
+import { ToastViewport } from '@astryxdesign/core/Toast'
 import { neutralTheme } from '@astryxdesign/theme-neutral/built'
 import { Link as RouterLink } from 'react-router-dom'
+import { ToastBridge } from './components/ToastBridge'
 
 /**
  * Adapter so Astryx's link-rendering components (Link, Button href, ...) navigate
@@ -37,7 +39,11 @@ const RouterLinkAdapter = forwardRef(function RouterLinkAdapter(
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <Theme theme={neutralTheme}>
-      <LinkProvider component={RouterLinkAdapter}>{children}</LinkProvider>
+      <LinkProvider component={RouterLinkAdapter}>
+        {children}
+        <ToastViewport />
+        <ToastBridge />
+      </LinkProvider>
     </Theme>
   )
 }

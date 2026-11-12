@@ -12,6 +12,7 @@ import { Badge } from '@astryxdesign/core/Badge'
 import { Table, pixel, proportional, type TableColumn } from '@astryxdesign/core/Table'
 import { adminApi } from '@/lib/adminApi'
 import type { AdminUser } from '@/lib/types'
+import { toast } from '@/lib/toast'
 
 type UserRow = AdminUser & Record<string, unknown>
 
@@ -29,7 +30,8 @@ export function AdminUsersPage() {
   const toggle = useMutation({
     mutationFn: ({ id, status }: { id: number; status: 'active' | 'disabled' }) =>
       adminApi.toggleUserStatus(id, status),
-    onSuccess: () => void qc.invalidateQueries({ queryKey: ['admin-users'] }),
+    onSuccess: () => { toast.success(t('admin.userUpdated')); void qc.invalidateQueries({ queryKey: ['admin-users'] }) },
+    onError: (e) => toast.error((e as { message?: string })?.message || 'Error'),
   })
 
   const rows = useMemo<UserRow[]>(() => (data?.items || []) as UserRow[], [data])

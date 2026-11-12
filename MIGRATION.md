@@ -58,8 +58,10 @@
 
 ### 已就绪的基础设施
 - 状态管理：Zustand（auth/app）+ TanStack Query（服务端状态，`QueryClientProvider`）。
-- API：`src/lib/` 下 `apiClient`（axios 拦截器逐字复用）、`authApi`、`authExtraApi`、`userApi`、`keysApi`、`usageApi`。
-- 组件实践：Astryx `Table`（data-driven + `proportional`/`pixel` 列宽 + `renderCell`）、`Badge`（`variant`）、`Card`/`VStack`/`HStack`/`TextInput`/`Button`/`Heading`/`Text` 已跑通。
+- 全局反馈：Astryx `Toast`（`ToastViewport` + `ToastBridge` 桥接 `useToast`，`src/lib/toast.ts` 供非组件代码调用 `toast.success/error`）。表单错误走 inline 校验，动作反馈走 toast（符合 Astryx 指南）。
+- 启动流程：`appStore.fetchPublicSettings`（站点名/logo + document.title）与 `fetchSetupStatus`（needs_setup → 重定向 `/setup`），在 `App` 挂载时执行，对齐原 `App.vue`。
+- API：`src/lib/` 下 `apiClient`（axios 拦截器逐字复用）、`authApi`、`authExtraApi`、`userApi`、`keysApi`、`usageApi`、`adminApi`、`settingsApi`、`redeemApi`。
+- 组件实践：Astryx `Table`（data-driven + `proportional`/`pixel` 列宽 + `renderCell`）、`Badge`（`variant`）、`Card`/`VStack`/`HStack`/`TextInput`/`Button`/`Heading`/`Text`/`Toast` 已跑通。
 
 ## 本地开发
 

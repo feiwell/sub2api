@@ -12,6 +12,7 @@ import { Table, pixel, proportional, type TableColumn } from '@astryxdesign/core
 import { Badge } from '@astryxdesign/core/Badge'
 import { keysApi } from '@/lib/keysApi'
 import type { ApiError, ApiKey } from '@/lib/types'
+import { toast } from '@/lib/toast'
 
 type KeyRow = ApiKey & Record<string, unknown>
 
@@ -37,6 +38,7 @@ export function KeysPage() {
     onSuccess: () => {
       setNewName('')
       setCreateErr(null)
+      toast.success(t('keys.created'))
       void qc.invalidateQueries({ queryKey: ['keys'] })
     },
     onError: (e) => setCreateErr((e as unknown as ApiError)?.message || 'Error'),
@@ -45,12 +47,20 @@ export function KeysPage() {
   const toggleMutation = useMutation({
     mutationFn: ({ id, status }: { id: number; status: 'active' | 'inactive' }) =>
       keysApi.toggleStatus(id, status),
-    onSuccess: () => void qc.invalidateQueries({ queryKey: ['keys'] }),
+    onSuccess: () => {
+      toast.success(t('keys.updated'))
+      void qc.invalidateQueries({ queryKey: ['keys'] })
+    },
+    onError: (e) => toast.error((e as unknown as ApiError)?.message || 'Error'),
   })
 
   const removeMutation = useMutation({
     mutationFn: (id: number) => keysApi.remove(id),
-    onSuccess: () => void qc.invalidateQueries({ queryKey: ['keys'] }),
+    onSuccess: () => {
+      toast.success(t('keys.deleted'))
+      void qc.invalidateQueries({ queryKey: ['keys'] })
+    },
+    onError: (e) => toast.error((e as unknown as ApiError)?.message || 'Error'),
   })
 
   const rows = useMemo<KeyRow[]>(() => (data?.items || []) as KeyRow[], [data])

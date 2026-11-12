@@ -11,6 +11,7 @@ import { Button } from '@astryxdesign/core/Button'
 import { userApi } from '@/lib/userApi'
 import { useAuthStore } from '@/stores/authStore'
 import type { ApiError, User } from '@/lib/types'
+import { toast } from '@/lib/toast'
 
 export function ProfilePage() {
   const { t } = useTranslation()
@@ -44,7 +45,7 @@ export function ProfilePage() {
     try {
       const updated = await userApi.updateProfile({ username: username.trim() })
       setUser(updated)
-      setProfileMsg(t('profile.saved'))
+      toast.success(t('profile.saved'))
     } catch (err) {
       setProfileMsg((err as ApiError)?.message || 'Error')
     } finally {
@@ -58,7 +59,7 @@ export function ProfilePage() {
     setSavingPwd(true)
     try {
       await userApi.changePassword(oldPassword, newPassword)
-      setPwdMsg(t('profile.passwordChanged'))
+      toast.success(t('profile.passwordChanged'))
       setOldPassword('')
       setNewPassword('')
     } catch (err) {
